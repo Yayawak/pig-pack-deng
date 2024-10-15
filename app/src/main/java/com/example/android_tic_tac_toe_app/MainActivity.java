@@ -14,7 +14,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     //    variables for image view
-    ImageView button1,button2,button3,button4,button5,button6,button7,button8,button9;
+    ImageView button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,
+    button14,button15,button16;
+
 
     private String startGame = "X";
 
@@ -34,17 +36,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.four_tile);
 
-        button1 = findViewById(R.id.buttonImage1);
-        button2 = findViewById(R.id.buttonImage2);
-        button3 = findViewById(R.id.buttonImage3);
-        button4 = findViewById(R.id.buttonImage4);
-        button5 = findViewById(R.id.buttonImage5);
-        button6 = findViewById(R.id.buttonImage6);
-        button7 = findViewById(R.id.buttonImage7);
-        button8 = findViewById(R.id.buttonImage8);
-        button9 = findViewById(R.id.buttonImage9);
+        button1 = findViewById(R.id.tile1);
+        button2 = findViewById(R.id.tile2);
+        button3 = findViewById(R.id.tile3);
+        button4 = findViewById(R.id.tile4);
+        button5 = findViewById(R.id.tile5);
+        button6 = findViewById(R.id.tile6);
+        button7 = findViewById(R.id.tile7);
+        button8 = findViewById(R.id.tile8);
+        button9 = findViewById(R.id.tile9);
+        button10 = findViewById(R.id.tile10);
+        button11 = findViewById(R.id.tile11);
+        button12 = findViewById(R.id.tile12);
+        button13 = findViewById(R.id.tile13);
+        button14 = findViewById(R.id.tile14);
+        button15 = findViewById(R.id.tile15);
+        button16 = findViewById(R.id.tile16);
 
         scorex = findViewById(R.id.ScoreX);
         scoreo = findViewById(R.id.ScoreY);

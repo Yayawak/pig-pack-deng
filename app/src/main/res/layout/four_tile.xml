@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app"
+    tools:context=".MainActivity">
+
+    <!--    score board-->
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fourTile">
+
+        <!-- score of X-->
+        <TextView
+            android:id="@+id/ScoreX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score X :- 0"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <!--  score of Y-->
+        <TextView
+            android:id="@+id/ScoreY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score Y :- 0"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fourTile"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="1dp">
+
+        <!-- horizontal line -->
+        <RelativeLayout
+            android:id="@+id/firstHorizontalLine"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toTopOf="@id/secondHorizontalLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/secondHorizontalLine"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/thirdHorizontalLine"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondHorizontalLine" />
+
+        <!-- Vertical line -->
+        <RelativeLayout
+            android:id="@+id/firstVerticalLine"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/secondVerticalLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/secondVerticalLine"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/thirdVerticalLine"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:background="#FF8800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/secondVerticalLine"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    First Row    -->
+
+        <ImageView
+            android:id="@+id/tile1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tile2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toStartOf="@id/tile3"
+            app:layout_constraintStart_toEndOf="@id/tile1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tile3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toStartOf="@+id/tile4"
+            app:layout_constraintStart_toEndOf="@id/tile2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tile4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--   Second Row   -->
+
+        <ImageView
+            android:id="@+id/tile5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toTopOf="@id/tile9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tile1" />
+
+        <ImageView
+            android:id="@+id/tile6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@id/tile2"
+            app:layout_constraintStart_toEndOf="@id/tile5"
+            app:layout_constraintEnd_toStartOf="@id/tile7"
+            app:layout_constraintBottom_toTopOf="@id/tile10"/>
+
+        <ImageView
+            android:id="@+id/tile7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@id/tile3"
+            app:layout_constraintEnd_toStartOf="@id/tile8"
+            app:layout_constraintStart_toEndOf="@id/tile6"
+            app:layout_constraintBottom_toTopOf="@id/tile11"/>
+
+        <ImageView
+            android:id="@+id/tile8"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tile4"
+            app:layout_constraintBottom_toTopOf="@id/tile12"/>
+
+        <!--  Third Row   -->
+
+        <ImageView
+            android:id="@+id/tile9"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toTopOf="@id/tile13"
+            app:layout_constraintTop_toBottomOf="@+id/tile5"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/tile10"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@id/tile6"
+            app:layout_constraintStart_toEndOf="@id/tile13"
+            app:layout_constraintBottom_toTopOf="@id/tile14"
+            app:layout_constraintEnd_toStartOf="@id/tile11"/>
+
+        <ImageView
+            android:id="@+id/tile11"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@id/tile7"
+            app:layout_constraintStart_toEndOf="@id/tile10"
+            app:layout_constraintEnd_toStartOf="@id/tile12"
+            app:layout_constraintBottom_toTopOf="@id/tile15"/>
+
+        <ImageView
+            android:id="@+id/tile12"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@id/tile8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tile16"/>
+
+        <!--   Fourth Row   -->
+
+        <ImageView
+            android:id="@+id/tile13"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/tile14"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tile15"
+            app:layout_constraintStart_toEndOf="@id/tile13" />
+
+        <ImageView
+            android:id="@+id/tile15"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tile16"
+            app:layout_constraintStart_toEndOf="@id/tile14" />
+
+        <ImageView
+            android:id="@+id/tile16"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    Reset button-->
+    <Button
+        android:id="@+id/Reset"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fourTile" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

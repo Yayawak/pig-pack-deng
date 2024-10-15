@@ -74,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 button7.setImageDrawable(null);
                 button8.setImageDrawable(null);
                 button9.setImageDrawable(null);
+                button10.setImageDrawable(null);
+                button11.setImageDrawable(null);
+                button12.setImageDrawable(null);
+                button13.setImageDrawable(null);
+                button14.setImageDrawable(null);
+                button15.setImageDrawable(null);
+                button16.setImageDrawable(null);
 
                 //resetValue function
                 resetValues();

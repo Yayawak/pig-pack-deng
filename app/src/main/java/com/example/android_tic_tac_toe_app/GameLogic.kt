@@ -2,13 +2,13 @@ package com.example.android_tic_tac_toe_app
 
 import kotlin.math.abs
 
-class GameLogic(private val boardSize: Int) {
-    var currentPlayer = "X"
+class GameLogic(private val boardSize: Int, private val playerXName: String, private val playerOName: String) {
+    var currentPlayer = playerXName
     var xScore = 0
     var oScore = 0
 
     fun switchPlayer() {
-        currentPlayer = if (currentPlayer == "X") "O" else "X"
+        currentPlayer = if (currentPlayer == playerXName) playerOName else playerXName
     }
 
     fun checkWinner(state: IntArray): Boolean {
@@ -57,7 +57,7 @@ class GameLogic(private val boardSize: Int) {
     }
 
     fun incrementScore() {
-        if (currentPlayer == "X") {
+        if (currentPlayer == playerXName) {
             xScore++
         } else {
             oScore++
@@ -65,6 +65,9 @@ class GameLogic(private val boardSize: Int) {
     }
 
     fun reset() {
-        currentPlayer = "X"
+        currentPlayer = playerXName
+        xScore = 0
+        oScore = 0
     }
 }
+

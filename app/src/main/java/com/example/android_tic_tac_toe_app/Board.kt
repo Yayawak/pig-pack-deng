@@ -24,11 +24,11 @@ class Board(activity: Activity, private val boardSize: Int) {
     }
 
     fun updateTile(index: Int, player: String) {
-        if (player == "X") {
-            buttons[index]!!.setImageResource(R.drawable.cross_app)
+        if (player == "Joomeng") { // Changed from "X"
+            buttons[index]!!.setImageResource(R.drawable.joomeng)
             state[index] = 1
-        } else {
-            buttons[index]!!.setImageResource(R.drawable.circle_app)
+        } else { //
+            buttons[index]!!.setImageResource(R.drawable.moodeng)
             state[index] = -1
         }
     }

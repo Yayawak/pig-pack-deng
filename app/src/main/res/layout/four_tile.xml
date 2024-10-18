@@ -9,7 +9,7 @@
 
     <!--    score board-->
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
@@ -22,23 +22,24 @@
         app:layout_constraintBottom_toTopOf="@id/fourTile">
 
         <!-- score of X-->
+
+        <!--  score of O-->
         <TextView
             android:id="@+id/ScoreX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Score X :- 0"
+            android:text="@string/score_p1"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold">
 
         </TextView>
 
-        <!--  score of Y-->
         <TextView
             android:id="@+id/ScoreY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Score Y :- 0"
+            android:text="@string/score_p2"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold">

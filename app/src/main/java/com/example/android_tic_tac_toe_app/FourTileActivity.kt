@@ -1,10 +1,12 @@
 package com.example.android_tic_tac_toe_app
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+
 
 class FourTileActivity : AppCompatActivity() {
     private var board: Board? = null
@@ -12,13 +14,17 @@ class FourTileActivity : AppCompatActivity() {
     private var scoreX: TextView? = null
     private var scoreO: TextView? = null
     private var resetButton: Button? = null
+    companion object {
+        const val PLAYER_X_NAME = "Joomeng"
+        const val PLAYER_O_NAME = "Moodeng"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.four_tile)
 
         board = Board(this, 4) // Initialize 4x4 board
-        gameLogic = GameLogic(4) // Initialize 4x4 logic
+        gameLogic = GameLogic(4, PLAYER_X_NAME, PLAYER_O_NAME)
 
         scoreX = findViewById(R.id.ScoreX)
         scoreO = findViewById(R.id.ScoreY)
@@ -60,13 +66,16 @@ class FourTileActivity : AppCompatActivity() {
         updateScore()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateScore() {
-        scoreX?.text = "Score X: ${gameLogic?.xScore}"
-        scoreO?.text = "Score O: ${gameLogic?.oScore}"
+        scoreX?.text = "Score ${PLAYER_X_NAME}: ${gameLogic?.xScore}"
+        scoreO?.text = "Score ${PLAYER_O_NAME}: ${gameLogic?.oScore}"
     }
 
     private fun showWinnerDialog(player: String) {
-        showAlert("$player Wins!")
+        val winnerName = if (player == PLAYER_X_NAME) PLAYER_X_NAME else PLAYER_O_NAME
+        showAlert("$winnerName Wins!")
+
     }
 
     private fun showDrawDialog() {

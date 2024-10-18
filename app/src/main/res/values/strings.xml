@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Android-Tic-Tac-Toe-App</string>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="home_title">WELCOME TO PIC-PAC-DENG!</string>
+    <string name="start_game">Start Game</string>
+    <string name="score_p1">Score Joomeng : 0</string>
+    <string name="score_p2">Score Moodeng : 0</string>
 </resources>

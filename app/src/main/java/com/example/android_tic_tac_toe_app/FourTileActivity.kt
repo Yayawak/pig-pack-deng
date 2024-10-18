@@ -1,90 +1,83 @@
-package com.example.android_tic_tac_toe_app;
+package com.example.android_tic_tac_toe_app
 
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.AlertDialog
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+class FourTileActivity : AppCompatActivity() {
+    private var board: Board? = null
+    private var gameLogic: GameLogic? = null
+    private var scoreX: TextView? = null
+    private var scoreO: TextView? = null
+    private var resetButton: Button? = null
 
-public class FourTileActivity extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.four_tile)
 
-    private Board board;
-    private GameLogic gameLogic;
-    private TextView scoreX, scoreO;
-    private Button resetButton;
+        board = Board(this, 4) // Initialize 4x4 board
+        gameLogic = GameLogic(4) // Initialize 4x4 logic
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.four_tile);
+        scoreX = findViewById(R.id.ScoreX)
+        scoreO = findViewById(R.id.ScoreY)
+        resetButton = findViewById(R.id.Reset)
 
-        board = new Board(this, 4); // Initialize 4x4 board
-        gameLogic = new GameLogic(4); // Initialize 4x4 logic
-
-        scoreX = findViewById(R.id.ScoreX);
-        scoreO = findViewById(R.id.ScoreY);
-        resetButton = findViewById(R.id.Reset);
-
-        initializeBoard();
-        setupResetButton();
+        initializeBoard()
+        setupResetButton()
     }
 
-    private void initializeBoard() {
-        for (int i = 0; i < board.buttons.length; i++) {
-            final int index = i;
-            board.buttons[i].setOnClickListener(view -> onTileClick(index));
+    private fun initializeBoard() {
+        board?.buttons?.forEachIndexed { index, button ->
+            button?.setOnClickListener { onTileClick(index) }
         }
     }
 
-    private void setupResetButton() {
-        resetButton.setOnClickListener(view -> resetGame());
+    private fun setupResetButton() {
+        resetButton?.setOnClickListener { resetGame() }
     }
 
-    private void onTileClick(int index) {
-        if (board.isTileEmpty(index)) {
-            board.updateTile(index, gameLogic.getCurrentPlayer());
-            if (gameLogic.checkWinner(board.getState())) {
-                showWinnerDialog(gameLogic.getCurrentPlayer());
-                gameLogic.incrementScore();
-                updateScore();
-            } else if (gameLogic.isBoardFull(board.getState())) {
-                showDrawDialog();
+    private fun onTileClick(index: Int) {
+        if (board?.isTileEmpty(index) == true) {
+            board?.updateTile(index, gameLogic?.currentPlayer ?: "")
+
+            if (gameLogic?.checkWinner(board?.state ?: IntArray(0)) == true) {
+                showWinnerDialog(gameLogic?.currentPlayer ?: "")
+                gameLogic?.incrementScore()
+                updateScore()
+            } else if (gameLogic?.isBoardFull(board?.state ?: IntArray(0)) == true) {
+                showDrawDialog()
             } else {
-                gameLogic.switchPlayer();
+                gameLogic?.switchPlayer()
             }
         }
     }
 
-    private void resetGame() {
-        board.reset();
-        gameLogic.reset();
-        updateScore();
+    private fun resetGame() {
+        board?.reset()
+        gameLogic?.reset()
+        updateScore()
     }
 
-    private void updateScore() {
-        scoreX.setText("Score X: " + gameLogic.getXScore());
-        scoreO.setText("Score O: " + gameLogic.getOScore());
+    private fun updateScore() {
+        scoreX?.text = "Score X: ${gameLogic?.xScore}"
+        scoreO?.text = "Score O: ${gameLogic?.oScore}"
     }
 
-    private void showWinnerDialog(String player) {
-        showAlert(player + " Wins!");
+    private fun showWinnerDialog(player: String) {
+        showAlert("$player Wins!")
     }
 
-    private void showDrawDialog() {
-        showAlert("It's a Draw!");
+    private fun showDrawDialog() {
+        showAlert("It's a Draw!")
     }
 
-    private void showAlert(String message) {
-        new AlertDialog.Builder(this)
-                .setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton("OK", (dialog, which) -> board.reset())
-                .show();
+    private fun showAlert(message: String) {
+        AlertDialog.Builder(this)
+            .setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton("OK") { _, _ -> board?.reset() }
+            .show()
     }
 }

@@ -1,86 +1,70 @@
-package com.example.android_tic_tac_toe_app;
+package com.example.android_tic_tac_toe_app
 
-public class GameLogic {
-    private String currentPlayer;
-    private int xScore, oScore;
-    private final int boardSize;
+import kotlin.math.abs
 
-    public GameLogic(int size) {
-        boardSize = size;
-        currentPlayer = "X";
-        xScore = 0;
-        oScore = 0;
+class GameLogic(private val boardSize: Int) {
+    var currentPlayer = "X"
+    var xScore = 0
+    var oScore = 0
+
+    fun switchPlayer() {
+        currentPlayer = if (currentPlayer == "X") "O" else "X"
     }
 
-    public String getCurrentPlayer() {
-        return currentPlayer;
+    fun checkWinner(state: IntArray): Boolean {
+        return checkRows(state) || checkColumns(state) || checkDiagonals(state)
     }
 
-    public void switchPlayer() {
-        currentPlayer = currentPlayer.equals("X") ? "O" : "X";
-    }
-
-    public boolean checkWinner(int[] state) {
-        return checkRows(state) || checkColumns(state) || checkDiagonals(state);
-    }
-
-    private boolean checkRows(int[] state) {
-        for (int i = 0; i < boardSize; i++) {
-            int sum = 0;
-            for (int j = 0; j < boardSize; j++) {
-                sum += state[i * boardSize + j];
+    private fun checkRows(state: IntArray): Boolean {
+        for (i in 0 until boardSize) {
+            var sum = 0
+            for (j in 0 until boardSize) {
+                sum += state[i * boardSize + j]
             }
-            if (Math.abs(sum) == boardSize) return true;
+            if (abs(sum.toDouble()).toInt() == boardSize) return true
         }
-        return false;
+        return false
     }
 
-    private boolean checkColumns(int[] state) {
-        for (int i = 0; i < boardSize; i++) {
-            int sum = 0;
-            for (int j = 0; j < boardSize; j++) {
-                sum += state[j * boardSize + i];
+    private fun checkColumns(state: IntArray): Boolean {
+        for (i in 0 until boardSize) {
+            var sum = 0
+            for (j in 0 until boardSize) {
+                sum += state[j * boardSize + i]
             }
-            if (Math.abs(sum) == boardSize) return true;
+            if (abs(sum.toDouble()).toInt() == boardSize) return true
         }
-        return false;
+        return false
     }
 
-    private boolean checkDiagonals(int[] state) {
-        int sumMain = 0, sumAnti = 0;
-        for (int i = 0; i < boardSize; i++) {
-            sumMain += state[i * boardSize + i];
-            sumAnti += state[(i + 1) * (boardSize - 1)];
+    private fun checkDiagonals(state: IntArray): Boolean {
+        var sumMain = 0
+        var sumAnti = 0
+        for (i in 0 until boardSize) {
+            sumMain += state[i * boardSize + i]
+            sumAnti += state[(i + 1) * (boardSize - 1)]
         }
-        return Math.abs(sumMain) == boardSize || Math.abs(sumAnti) == boardSize;
+        return abs(sumMain.toDouble()).toInt() == boardSize || abs(sumAnti.toDouble()).toInt() == boardSize
     }
 
-    public boolean isBoardFull(int[] state) {
-        for (int cell : state) {
+    fun isBoardFull(state: IntArray): Boolean {
+        for (cell in state) {
             if (cell == 0) {
-                return false;
+                return false
             }
         }
-        return true;
+        return true
     }
 
-    public void incrementScore() {
-        if (currentPlayer.equals("X")) {
-            xScore++;
+    fun incrementScore() {
+        if (currentPlayer == "X") {
+            xScore++
         } else {
-            oScore++;
+            oScore++
         }
     }
 
-    public int getXScore() {
-        return xScore;
-    }
-
-    public int getOScore() {
-        return oScore;
-    }
-
-    public void reset() {
-        currentPlayer = "X";
+    fun reset() {
+        currentPlayer = "X"
     }
 }

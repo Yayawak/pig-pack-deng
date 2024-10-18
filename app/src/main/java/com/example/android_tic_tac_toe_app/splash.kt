@@ -1,30 +1,27 @@
-package com.example.android_tic_tac_toe_app;
+package com.example.android_tic_tac_toe_app
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.WindowManager;
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 
-import androidx.appcompat.app.AppCompatActivity;
+class splash : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
-public class splash extends AppCompatActivity {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        getSupportActionBar().hide();
-
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run(){
-                Intent intent =  new Intent(com.example.android_tic_tac_toe_app.splash.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },3000);
+        //        getSupportActionBar().hide();
+        Handler().postDelayed({
+            val intent = Intent(this@splash, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000)
     }
 }
 
